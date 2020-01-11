@@ -3,7 +3,7 @@
 	"displayName": "Int Transformer",
 	"description": "Transform int based code to double and long",
 	"publisher": "wolray",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
