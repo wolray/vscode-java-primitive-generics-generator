@@ -1,15 +1,25 @@
 {
 	"name": "int-transformer",
 	"displayName": "Int Transformer",
-	"description": "Generate code of primitive double and long from int-based source code",
+	"description": "Transform int based code to double and long",
 	"publisher": "wolray",
 	"version": "1.0.0",
 	"engines": {
-		"vscode": "^1.40.0"
+		"vscode": "^1.41.0"
 	},
 	"categories": [
 		"Other"
 	],
+	"homepage": "https://github.com/wolray/vscode-int-transformer",
+	"keywords": [
+		"java",
+		"primitive",
+		"generics"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wolray/vscode-int-transformer.git"
+	},
 	"activationEvents": [
 		"onCommand:intTransformer.selection",
 		"onCommand:intTransformer.file"

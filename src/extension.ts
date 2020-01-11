@@ -41,7 +41,7 @@ function fromFile(transformer: Transformer) {
 }
 
 class Transformer {
-	readonly low = /(?<![a-z])int(?= [a-z][a-z]+ )/g;
+	readonly low = /(?<![a-z])int(?= +[a-z][a-z]+)/g;
 	readonly cap = /(Integer)|(Int)/g;
 
 	toDouble(intSource: string): string {
