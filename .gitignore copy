@@ -1,7 +1,0 @@
-out
-node_modules
-.vscode-test/
-*.vsix
-tslint.json
-package-lock.json
-vsc-extension-quickstart.md

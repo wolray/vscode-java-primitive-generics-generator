@@ -1,6 +1,6 @@
-# java-primitive-transformer README
+# int-transformer README
 
-This is the README for your extension "java-primitive-transformer". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "int-transformer". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

@@ -1,23 +1,29 @@
 {
-	"name": "java-primitive-transformer",
-	"displayName": "Java Primitive Transformer",
-	"description": "Generate java code of primitive double and long from integer-based source code",
-	"version": "0.0.1",
+	"name": "int-transformer",
+	"displayName": "Int Transformer",
+	"description": "Generate code of primitive double and long from int-based source code",
+	"publisher": "wolray",
+	"version": "1.0.0",
 	"engines": {
-		"vscode": "^1.41.0"
+		"vscode": "^1.40.0"
 	},
 	"categories": [
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:intTransformer.selection",
+		"onCommand:intTransformer.file"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "intTransformer.selection",
+				"title": "Transform int of selection"
+			},
+			{
+				"command": "intTransformer.file",
+				"title": "Transform int of file"
 			}
 		]
 	},

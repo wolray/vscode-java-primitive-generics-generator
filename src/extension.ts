@@ -1,27 +1,56 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "java-primitive-transformer" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
-	});
-
-	context.subscriptions.push(disposable);
+	const transformer: Transformer = new Transformer();
+	context.subscriptions.push(vscode.commands.registerCommand('intTransformer.selection', () =>
+		fromSelection(transformer)));
+	context.subscriptions.push(vscode.commands.registerCommand('intTransformer.file', async () =>
+		fromFile(transformer)));
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+async function fromSelection(transformer: Transformer) {
+	let editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		return;
+	}
+	let seperation = await vscode.window.showInputBox({
+		placeHolder: 'separator (newline as default)'
+	}) || '\n';
+	let src = editor.document.getText(editor.selection);
+	let res: string[] = [];
+	res.push(seperation);
+	res.push(transformer.toDouble(src));
+	res.push(seperation);
+	res.push(transformer.toLong(src));
+	let end = editor.selection.end;
+	let out = res.join('');
+	editor.edit(builder => builder.replace(end, out));
+}
+
+function fromFile(transformer: Transformer) {
+	let editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		return;
+	}
+	let fs = require('fs');
+	let src = editor.document.getText();
+	let doubleFilePath = transformer.toDouble(editor.document.fileName);
+	fs.writeFileSync(doubleFilePath, transformer.toDouble(src), 'utf8');
+	let longFilePath = transformer.toLong(editor.document.fileName);
+	fs.writeFileSync(longFilePath, transformer.toLong(src), 'utf8');
+}
+
+class Transformer {
+	readonly low = /(?<![a-z])int(?= [a-z][a-z]+ )/g;
+	readonly cap = /(Integer)|(Int)/g;
+
+	toDouble(intSource: string): string {
+		return intSource.replace(this.low, 'double').replace(this.cap, 'Double');
+	}
+
+	toLong(intSource: string): string {
+		return intSource.replace(this.low, 'long').replace(this.cap, 'Long');
+	}
+}
+
+export function deactivate() { }
