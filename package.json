@@ -29,11 +29,11 @@
 		"commands": [
 			{
 				"command": "intTransformer.selection",
-				"title": "Transform int of selection"
+				"title": "Int Transformer: Selection"
 			},
 			{
 				"command": "intTransformer.file",
-				"title": "Transform int of file"
+				"title": "Int Transformer: File"
 			}
 		]
 	},

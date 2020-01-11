@@ -15,7 +15,7 @@ async function fromSelection(transformer: Transformer) {
 	}
 	let seperation = await vscode.window.showInputBox({
 		placeHolder: 'separator (newline as default)'
-	}) || '\n';
+	}) || '\n\n';
 	let src = editor.document.getText(editor.selection);
 	let res: string[] = [];
 	res.push(seperation);
