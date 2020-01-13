@@ -1,39 +1,40 @@
 {
-	"name": "int-transformer",
-	"displayName": "Int Transformer",
-	"description": "Transform int based code to double and long",
+	"name": "java-primitive-generics-generator",
+	"displayName": "Java Primitive Generics Generator",
+	"description": "Generate java int/double/long primitive classes from source class with generic type <N>",
 	"publisher": "wolray",
-	"version": "1.0.3",
+	"version": "1.1.0",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
 	"categories": [
 		"Other"
 	],
-	"homepage": "https://github.com/wolray/vscode-int-transformer",
+	"homepage": "https://github.com/wolray/vscode-java-primitive-generics-generator",
 	"keywords": [
 		"java",
 		"primitive",
-		"generics"
+		"generics",
+		"generator"
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/wolray/vscode-int-transformer.git"
+		"url": "https://github.com/wolray/vscode-java-primitive-generics-generator.git"
 	},
 	"activationEvents": [
-		"onCommand:intTransformer.selection",
-		"onCommand:intTransformer.file"
+		"onCommand:javaPrimitiveGenericsGenerator.firstToInt",
+		"onCommand:javaPrimitiveGenericsGenerator.thenToDoubleLong"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "intTransformer.selection",
-				"title": "Int Transformer: Selection"
+				"command": "javaPrimitiveGenericsGenerator.firstToInt",
+				"title": "Java Primitive Generics Generator: First <N> -> Integer"
 			},
 			{
-				"command": "intTransformer.file",
-				"title": "Int Transformer: File"
+				"command": "javaPrimitiveGenericsGenerator.thenToDoubleLong",
+				"title": "Java Primitive Generics Generator: Then Integer -> Double, Long"
 			}
 		]
 	},
