@@ -3,7 +3,7 @@
 	"displayName": "Java Primitive Generics Generator",
 	"description": "Generate java int/double/long primitive classes from source class with generic type <N>",
 	"publisher": "wolray",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
